@@ -1,0 +1,17 @@
+--- 
+ - name: ensure git is installed
+   apt: name=git
+
+ - name: ensure mapgen dependencies
+   apt: name={{ item }}
+   with_items:
+     - python-cherrypy3
+     - python-genshi
+     - p7zip
+     - gdal-bin
+     - mapserver-bin
+
+ - name: checkout git of mapgen to /opt/mapgen/
+   git: dest=/opt/mapgen repo={{ mapgen_git }}
+
+

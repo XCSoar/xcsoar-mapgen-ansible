@@ -1,0 +1,21 @@
+--- 
+  - name: ensure depencies are installed
+    apt: name={{ item }}  
+    with_items:
+      - unzip
+      - libjpeg62-turbo-dev
+
+  - name: geojasper create installdir
+    file: state=directory path={{ mapgen_data_dir}}/geojasper 
+
+  - name: fetch geojasper src
+    unarchive: dest={{ mapgen_data_dir }}/geojasper copy=yes src=geojasper_src.zip
+  
+  - name: change perms on configure
+    file: path={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/configure mode=0755 
+  
+  - name: compile 
+    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO 
+
+  - name: install 
+    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO  target=install
