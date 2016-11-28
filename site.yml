@@ -1,0 +1,8 @@
+--- 
+ - hosts: all
+   roles: 
+     - mapgen-data
+     - nginx
+     - geojasper
+     - mapgen
+     
