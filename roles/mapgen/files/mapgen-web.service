@@ -1,0 +1,13 @@
+[Unit]
+Description=Mapgen Web Server
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/mapgen-web.pid
+ExecStart=/opt/mapgen/bin/mapgen-server 
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /var/run/mapgen-web.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
