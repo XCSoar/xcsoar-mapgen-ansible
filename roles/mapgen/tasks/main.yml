@@ -15,7 +15,7 @@
    git: dest=/opt/mapgen repo={{ mapgen_git }}
  
  - name: install systemd scripts 
-   copy: name={{ item }} dest=/etc/systemd/system/{{ item }}
+   copy: src={{ item }} dest=/etc/systemd/system/{{ item }}
    with_items:
      - mapgen-web.service
      - mapgen-worker.service
@@ -27,4 +27,4 @@
    service: name={{ item }} state=started enabled=yes
    with_items:
      - mapgen-web
-     - mapgen-work
+     - mapgen-worker
