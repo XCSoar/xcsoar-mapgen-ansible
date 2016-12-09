@@ -1,30 +1,47 @@
 --- 
   - name: install dependencies to compile gdal
-    apt: name=build-essential
+    apt: name={{ item }}
+    with_items:
+      - build-essential
+      - devscripts
+      - autoconf
+      - automake
+      - autotools-dev
+      - debhelper
+      - fakeroot
+      - file
+      - lintian 
+      - patch
+      - patchutils
+      - pbuilder
 
-# FIXME: doesn't work with the ansible module for some reason
-#  - name: installb build-dependencies for gdal
-#    apt: name=gdal state=build-dep default_release=jessie-backports
-#
+  - name: installb build-dependencies for gdal
+    apt: name=gdal state=build-dep 
+
   - name: ensure gdal directory
     file: path=/opt/gdal state=directory
+
+  - name: install gdal build-deps
+    apt: name=gdal-bin state=build-dep
  
   - name: install gdal source
     command: apt-get source gdal-bin 
     args: 
       chdir: /opt/gdal
 
-  - name: patch source
-    patch: src=/opt/mapgen/ext-tool-patches/gdal.diff basedir=/opt/gdal/gdal-1.10.1+dfsg/ strip=1
-
-  - name: configure source
-    command: ./configure
-    args:
+  - name: quilt create patch 
+    shell: QUILT_PATCHES=debian/patches quilt import /opt/mapgen/ext-tool-patches/gdal.diff 
+    args: 
       chdir: /opt/gdal/gdal-1.10.1+dfsg/
 
-  - name: compile source
-    make: 
-      chdir: /opt/gdal/gdal-1.10.1+dfsg/ 
-      target: install 
 
-    
+  - name: quilt refresh
+    shell: QUILT_PATCHES=debian/patches quilt refresh
+    args: 
+      chdir: /opt/gdal/gdal-1.10.1+dfsg/
+
+
+  - name: configure source
+    command: debuild -us -uc
+    args: 
+      chdir: /opt/gdal/gdal-1.10.1+dfsg/
