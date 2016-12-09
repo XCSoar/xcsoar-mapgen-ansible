@@ -1,7 +1,7 @@
 mapgen_data_dir: /opt/
 mapgen_data_vg: mapgen-data
-mapgen_data_pv:  /dev/sdb1
-mapgen_data_lv:  opt
+mapgen_data_pv: /dev/sdb1
+mapgen_data_lv: opt
 mapgen_data_fs: ext4
 mapgen_data_size: 100%VG
 mapgen_git: http://git.xcsoar.org/cgit/folken/mapgen.git/
