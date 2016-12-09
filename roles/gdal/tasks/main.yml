@@ -1,3 +1,30 @@
 --- 
   - name: install dependencies to compile gdal
     apt: name=build-essential
+
+# FIXME: doesn't work with the ansible module for some reason
+#  - name: installb build-dependencies for gdal
+#    apt: name=gdal state=build-dep default_release=jessie-backports
+#
+  - name: ensure gdal directory
+    file: path=/opt/gdal state=directory
+ 
+  - name: install gdal source
+    command: apt-get source gdal-bin 
+    args: 
+      chdir: /opt/gdal
+
+  - name: patch source
+    patch: src=/opt/mapgen/ext-tool-patches/gdal.diff basedir=/opt/gdal/gdal-1.10.1+dfsg/ strip=1
+
+  - name: configure source
+    command: ./configure
+    args:
+      chdir: /opt/gdal/gdal-1.10.1+dfsg/
+
+  - name: compile source
+    make: 
+      chdir: /opt/gdal/gdal-1.10.1+dfsg/ 
+      target: install 
+
+    
