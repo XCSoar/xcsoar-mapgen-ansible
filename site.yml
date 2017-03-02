@@ -3,6 +3,8 @@
    roles: 
      - mapgen-data
      - nginx
-     - geojasper
+     - { role: geojasper, tags: [ "geojasper" ] }
+     - { role: openjpeg, tags: [ "openjpeg" ] }
+     - { role: gdal, tags: [ "gdal" ] }
      - mapgen
      
