@@ -1,5 +1,5 @@
 --- 
-  - name: install dependencies to compile gdal
+  - name: install tools to compile gdal
     apt: name={{ item }}
     with_items:
       - build-essential
@@ -14,9 +14,13 @@
       - patch
       - patchutils
       - pbuilder
+      - packaging-dev
 
-  - name: installb build-dependencies for gdal
+  - name: installb build-dependencies of gdal
     apt: name=gdal state=build-dep 
+
+  - name: remove previous build dir to enable clean build
+    file: path=/opt/gdal state=absent
 
   - name: ensure gdal directory
     file: path=/opt/gdal state=directory
