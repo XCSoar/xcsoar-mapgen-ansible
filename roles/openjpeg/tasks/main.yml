@@ -10,13 +10,13 @@
   - name: checkout openjpeg git
     git: dest=/opt/openjpeg repo=https://github.com/uclouvain/openjpeg.git version=openjpeg-2.0
 
-  - name: install openjpeg
+  - name: configure openjpeg
     shell: cmake .
     args:
       chdir: /opt/openjpeg 
       creates: Makefile
 
-  - name: install openjpeg
+  - name: make install openjpeg
     make: chdir=/opt/openjpeg target=install 
  
  
