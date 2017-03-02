@@ -4,6 +4,7 @@
     with_items:
       - unzip
       - libjpeg62-turbo-dev
+      - build-essential
 
   - name: geojasper create installdir
     file: state=directory path={{ mapgen_data_dir}}/geojasper 
@@ -14,8 +15,14 @@
   - name: change perms on configure
     file: path={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/configure mode=0755 
   
-  - name: compile 
+  - name: configure
+    shell: ./configure --enable-shared 
+    args:
+      chdir: /{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/
+      creates: /{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile
+  
+  - name: make 
     make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO 
 
-  - name: install 
-    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO  target=install
+  - name: make 
+    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO target=install 
