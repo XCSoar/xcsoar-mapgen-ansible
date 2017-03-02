@@ -11,7 +11,7 @@
     git: dest=/opt/openjpeg repo=https://github.com/uclouvain/openjpeg.git version=openjpeg-2.0
 
   - name: install openjpeg
-    command: cmake .
+    shell: cmake .
     args:
       chdir: /opt/openjpeg 
       creates: Makefile
