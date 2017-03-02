@@ -1,0 +1,22 @@
+---
+  - name: download source package
+    apt: name=openjpeg state=build-dep
+ 
+  - name: build dependencies  
+    apt: name={{ item }} state=present
+    with_items:
+      - cmake 
+
+  - name: checkout openjpeg git
+    git: dest=/opt/openjpeg repo=https://github.com/uclouvain/openjpeg.git version=openjpeg-2.0
+
+  - name: install openjpeg
+    command: cmake .
+    args:
+      chdir: /opt/openjpeg 
+      creates: Makefile
+
+  - name: install openjpeg
+    make: chdir=/opt/openjpeg target=install 
+ 
+ 
