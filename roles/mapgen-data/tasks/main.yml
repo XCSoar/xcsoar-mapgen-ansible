@@ -1,4 +1,8 @@
 --- 
+  - name: ensure lvm2 is installed
+    apt: 
+      name: lvm2
+
   - name: configure mapgen dir
     lvg: vg={{ mapgen_data_vg }} pvs={{ mapgen_data_pv }}
 
