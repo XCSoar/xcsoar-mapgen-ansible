@@ -1,0 +1,8 @@
+---
+ - name: restart_mapgen
+   service:
+     name: "{{ item }}"
+     state: restarted
+   with_items:
+     - mapgen-worker
+     - mapgen-web
