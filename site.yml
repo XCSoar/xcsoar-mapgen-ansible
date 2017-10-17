@@ -3,5 +3,5 @@
    roles: 
      - mapgen-data
      - nginx
+     - { role: geojasper, tags: [ "geojasper" ] }
      - { role: mapgen, tags: [ "mapgen" ] }
-     
