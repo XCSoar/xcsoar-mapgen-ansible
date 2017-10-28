@@ -17,7 +17,7 @@ Installation:
  - 'apt install python-minimal' 
 4. Install ansible on your machine
 5. checkout this git repo
-6. edit group_vars/mapgen
+6. edit group_vars/all
  - Set mount point
  - Set vg-name
  - Set second disk device

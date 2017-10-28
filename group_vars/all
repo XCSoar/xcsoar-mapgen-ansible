@@ -1,0 +1,3 @@
+mapgen_data_dir: /opt
+mapgen_data_pv: /dev/vdb
+mapgen_data_vg: mapgen-data
