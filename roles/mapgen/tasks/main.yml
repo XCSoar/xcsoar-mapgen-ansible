@@ -12,7 +12,7 @@
      - mapserver-bin
 
  - name: checkout git of mapgen to /opt/mapgen/
-   git: dest=/opt/mapgen repo={{ mapgen_git }}
+   git: dest={{ mapgen_data }}/mapgen repo={{ mapgen_git }}
    notify: restart_mapgen
  
  - name: install systemd scripts 
