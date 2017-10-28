@@ -4,5 +4,3 @@ mapgen_data_pv: /dev/vdb
 mapgen_data_lv: opt
 mapgen_data_fs: ext4
 mapgen_data_size: 100%VG
-mapgen_git: https://github.com/lordfolken/mapgen.git
-geojasper_url: 'http://www.dimin.net/software/geojasper/geojasper_src.zip'
