@@ -25,3 +25,9 @@ Installation:
 8. Apply this playbook to the target machine: 
  - `ansible-playbook -i hosts site.yml -l mapgen -b --become-method su --ask-su-pass $YOURHOST` 
 9. You should now be able to visit the website under http://yourmachine/ and start to submitt requests. 
+
+Vagrant Testing: 
+================
+1. install vagrant
+2. install vagrant-sshfs
+3. `vagrant up` in this directory
