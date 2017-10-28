@@ -7,7 +7,7 @@
       - build-essential
 
   - name: geojasper create installdir
-    file: state=directory path={{ mapgen_data_dir}}/geojasper 
+    file: state=directory path={{ mapgen_data_dir }}/geojasper 
 
   - name: fetch geojasper src
     unarchive: dest={{ mapgen_data_dir }}/geojasper copy=yes src=geojasper_src.zip
