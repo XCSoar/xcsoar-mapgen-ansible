@@ -1,28 +1,39 @@
---- 
+---
   - name: ensure depencies are installed
-    apt: name={{ item }}  
+    apt: 
+      name: "{{ item }}"
     with_items:
       - unzip
       - libjpeg62-turbo-dev
       - build-essential
 
   - name: geojasper create installdir
-    file: state=directory path={{ mapgen_data_dir }}/geojasper 
+    file:
+      state: directory
+      path: "{{ mapgen_data_dir }}/geojasper"
 
   - name: fetch geojasper src
-    unarchive: dest={{ mapgen_data_dir }}/geojasper copy=yes src=geojasper_src.zip
-  
+    unarchive:
+      dest: "{{ mapgen_data_dir }}/geojasper"
+      copy: yes
+      src: geojasper_src.zip
+
   - name: change perms on configure
-    file: path={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/configure mode=0755 
-  
+    file:
+      path: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/configure"
+      mode: 0755
+
   - name: configure
     shell: ./configure --enable-shared 
     args:
-      chdir: /{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/
-      creates: /{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile
-  
-  - name: make 
-    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO 
+      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/"
+      creates: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile"
 
-  - name: make 
-    make: chdir={{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO target=install 
+  - name: make build
+    make:
+      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
+
+  - name: mak installe
+    make:
+      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
+      target: install
