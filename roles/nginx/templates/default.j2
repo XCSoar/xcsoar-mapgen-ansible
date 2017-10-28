@@ -19,21 +19,4 @@ server {
     proxy_pass              http://jenkins;
   }
 
-  location /waypoints {
-   alias /srv/www/download.xcsoar.org/waypoints;
-   autoindex on;
-  }
-
-  location /maps {
-   alias /srv/www/download.xcsoar.org/maps;
-   autoindex on;
-  }
-
-
-  location /mapgen-old {
-   alias /opt/mapgen-data/;
-   autoindex on;
-  }
-
 }
-
