@@ -7,7 +7,7 @@ Requirements:
 -------------
 * Currently Supported Target is Debian 9 
 * The machine needs an unpartitioned second disk for data storage > 25G. 
-* The role installes under /opt/mapgen 
+* The role installs the mapgen server under /opt/mapgen 
 
 Installation: 
 -------------
@@ -21,7 +21,7 @@ Installation:
  - Set mount point
  - Set vg-name
  - Set second disk device
-7. edit hosts and replace mapgen.xcsoar.org with your fqdn or ip
+7. edit the hosts file and replace mapgen.xcsoar.org with your fqdn or ip address
 8. Apply this playbook to the target machine: 
  - `ansible-playbook -i hosts site.yml -l mapgen -b --become-method su --ask-su-pass $YOURHOST` 
 9. You should now be able to visit the website under http://yourmachine/ and start to submitt requests. 
