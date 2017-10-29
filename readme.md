@@ -1,6 +1,6 @@
 Mapgen Server for XCSoar 
 ========================
-https://travis-ci.org/lordfolken/xcsoar-mapgen-ansible.svg?branch=master
+[![Build Status](https://travis-ci.org/lordfolken/xcsoar-mapgen-ansible.svg?branch=master)](https://github.com/lordfolken/xcsoar-mapgen-ansible/)
 
 This Playbook installs [xcsoar's](http://xcsoar.org/) Map generator. 
 
