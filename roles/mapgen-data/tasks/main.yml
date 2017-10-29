@@ -1,16 +1,27 @@
---- 
+---
   - name: ensure lvm2 is installed
-    apt: 
+    apt:
       name: lvm2
 
   - name: configure mapgen dir
-    lvg: vg={{ mapgen_data_vg }} pvs={{ mapgen_data_pv }}
+    lvg:
+      vg: "{{ mapgen_data_vg }}"
+      pvs: "{{ mapgen_data_pv }}"
 
-  - name: configure lv 
-    lvol: lv={{ mapgen_data_lv }} vg={{ mapgen_data_vg }} size={{ mapgen_data_size }}
- 
+  - name: configure lv
+    lvol:
+      lv: "{{ mapgen_data_lv }}"
+      vg: "{{ mapgen_data_vg }}"
+      size: "{{ mapgen_data_size }}"
+
   - name: configure filesystem
-    filesystem: dev=/dev/{{ mapgen_data_vg }}/{{ mapgen_data_lv }} fstype={{ mapgen_data_fs }} 
+    filesystem:
+      dev: "/dev/{{ mapgen_data_vg }}/{{ mapgen_data_lv }}"
+      fstype: "{{ mapgen_data_fs }}"
 
   - name: mount filesystem
-    mount: fstype={{ mapgen_data_fs }} name={{ mapgen_data_dir }} src=/dev/{{ mapgen_data_vg }}/{{ mapgen_data_lv }} state=mounted
+    mount:
+      fstype: "{{ mapgen_data_fs }}"
+      name: "{{ mapgen_data_dir }}"
+      src: "/dev/{{ mapgen_data_vg }}/{{ mapgen_data_lv }}"
+      state: mounted

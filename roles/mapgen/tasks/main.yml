@@ -1,9 +1,11 @@
---- 
+---
  - name: ensure git is installed
-   apt: name=git
+   apt:
+     name: git
 
  - name: ensure mapgen dependencies
-   apt: name={{ item }}
+   apt:
+     name: "{{ item }}"
    with_items:
      - python-cherrypy3
      - python-genshi
@@ -12,20 +14,30 @@
      - mapserver-bin
 
  - name: checkout git of mapgen to /opt/mapgen/
-   git: dest={{ mapgen_data }}/mapgen repo={{ mapgen_git }}
-   notify: restart_mapgen
- 
- - name: install systemd scripts 
-   copy: src={{ item }} dest=/etc/systemd/system/{{ item }}
+   git:
+     dest: "{{ mapgen_data }}/mapgen"
+     repo: "{{ mapgen_git }}"
+     version: "HEAD"
+   notify:
+     - restart_mapgen
+   tags:
+     - skip_ansible_lint
+
+ - name: install systemd scripts
+   copy:
+     src: "{{ item }}"
+     dest: "/etc/systemd/system/{{ item }}"
    with_items:
      - mapgen-web.service
      - mapgen-worker.service
-
- - name: reload systemd
-   command: systemctl daemon-reload
+   notify:
+     - restart_mapgen
 
  - name: enable both services and start them
-   service: name={{ item }} state=started enabled=yes
+   service:
+     name: "{{ item }}"
+     state: started
+     enabled: yes
    with_items:
      - mapgen-web
      - mapgen-worker

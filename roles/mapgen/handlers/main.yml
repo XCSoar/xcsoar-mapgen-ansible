@@ -1,8 +1,9 @@
 ---
  - name: restart_mapgen
-   service:
+   systemd:
      name: "{{ item }}"
      state: restarted
+     daemon_reload: true
    with_items:
      - mapgen-worker
      - mapgen-web

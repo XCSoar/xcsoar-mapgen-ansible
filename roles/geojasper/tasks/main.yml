@@ -1,6 +1,6 @@
 ---
   - name: ensure depencies are installed
-    apt: 
+    apt:
       name: "{{ item }}"
     with_items:
       - unzip
@@ -24,7 +24,7 @@
       mode: 0755
 
   - name: configure
-    shell: ./configure --enable-shared 
+    command: ./configure --enable-shared
     args:
       chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/"
       creates: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile"
