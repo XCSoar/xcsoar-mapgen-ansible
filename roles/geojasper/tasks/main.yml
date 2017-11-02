@@ -33,7 +33,7 @@
     make:
       chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
 
-  - name: mak installe
+  - name: make install
     make:
       chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
       target: install
