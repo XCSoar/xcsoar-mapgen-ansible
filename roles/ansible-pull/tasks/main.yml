@@ -1,10 +1,11 @@
+---
  - name: install ansible native
    apt: 
-     - name: ansible
+     name: ansible
 
  - name: install cron job     
    cron:
-    hour: "22"
-    cron_file: "mapgen-ansible-pull"
-    user: "root"
-    job: ansible-pull -U https://github.com/XCSoar/xcsoar-mapgen-ansible.git local.yml
+     hour: "22"
+     cron_file: "mapgen-ansible-pull"
+     user: "root"
+     job: ansible-pull -U https://github.com/XCSoar/xcsoar-mapgen-ansible.git local.yml
