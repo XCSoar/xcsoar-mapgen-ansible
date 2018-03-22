@@ -1,9 +1,9 @@
 ---
  - name: install ansible native
-   apt: 
+   apt:
      name: ansible
 
- - name: install cron job     
+ - name: install cron job
    cron:
      hour: "22"
      cron_file: "mapgen-ansible-pull"
