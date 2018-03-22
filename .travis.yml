@@ -14,5 +14,8 @@ script:
   - ansible-lint --version
   - ansible-playbook site.yml --syntax-check
   - ansible-lint site.yml
+  - ansible-lint local.yml
+  - ansible-lint vagrant.yml
+  - ansible local.yml
 
 # vim: set ts=2 sw=2 tw=2 :
