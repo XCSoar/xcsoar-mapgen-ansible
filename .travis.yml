@@ -12,10 +12,12 @@ install:
 script:
   - ansible --version
   - ansible-lint --version
-  - ansible-playbook site.yml --syntax-check
   - ansible-lint site.yml
   - ansible-lint local.yml
   - ansible-lint vagrant.yml
-  - ansible local.yml
+  - ansible-playbook site.yml --syntax-check
+  - ansible-playbook local.yml --syntax-check
+  - ansible-playbook vagrant.yml --syntax-check
+  - ansible-playbook local.yml 
 
 # vim: set ts=2 sw=2 tw=2 :
