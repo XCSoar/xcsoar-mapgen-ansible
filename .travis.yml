@@ -18,6 +18,6 @@ script:
   - ansible-playbook site.yml --syntax-check
   - ansible-playbook local.yml --syntax-check
   - ansible-playbook vagrant.yml --syntax-check
-  - ansible-playbook local.yml 
+  - ansible-playbook -b local.yml 
 
 # vim: set ts=2 sw=2 tw=2 :
