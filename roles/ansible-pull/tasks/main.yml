@@ -2,7 +2,7 @@
 - name: install ansible native
   apt:
     name: ansible
-    default_release: stretch-backports
+    default_release: "{{ ansible_distribution_release }}-backports"
 
 - name: install cron job
   cron:
@@ -10,4 +10,4 @@
     minute: "23"
     cron_file: "mapgen-ansible-pull"
     user: "root"
-    job: ansible-pull -U https://github.com/XCSoar/xcsoar-mapgen-ansible.git local.yml
+    job: "ansible-pull -U {{ ansible_pull_mapgen_giturl }} local.yml"
