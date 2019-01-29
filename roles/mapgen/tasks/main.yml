@@ -1,12 +1,12 @@
 ---
  - name: ensure git is installed
-   apt:
+   package:
      name: git
 
  - name: ensure mapgen dependencies
-   apt:
+   package:
      name: "{{ item }}"
-   with_items:
+   loop:
      - python-cherrypy3
      - python-genshi
      - p7zip
@@ -27,7 +27,7 @@
    copy:
      src: "{{ item }}"
      dest: "/etc/systemd/system/{{ item }}"
-   with_items:
+   loop:
      - mapgen-web.service
      - mapgen-worker.service
    notify:
@@ -38,6 +38,6 @@
      name: "{{ item }}"
      state: started
      enabled: yes
-   with_items:
+   loop:
      - mapgen-web
      - mapgen-worker
