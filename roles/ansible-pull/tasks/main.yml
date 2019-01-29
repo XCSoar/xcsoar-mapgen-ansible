@@ -1,7 +1,8 @@
 ---
 - name: install ansible native
-  package:
+  apt:
     name: ansible
+    default_release: stretch-backports
 
 - name: install cron job
   cron:
