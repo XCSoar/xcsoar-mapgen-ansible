@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 language: python
-sudo: true
 cache: pip
 python:
   - "3.6"
