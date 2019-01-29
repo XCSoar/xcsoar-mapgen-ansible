@@ -9,6 +9,7 @@ install:
   - pip install --upgrade ansible ansible-lint yamllint
 
 before_script:
+  - apt-get install -y python3-apt
   - git clone https://github.com/adfinis-sygroup/ansible-lint-rules ../lint-rules
   - ansible --version
   - ansible-lint --version
