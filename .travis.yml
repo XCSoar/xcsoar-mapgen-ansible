@@ -6,10 +6,9 @@ python:
   - "3.6"
 
 install:
-  - pip install --upgrade ansible ansible-lint yamllint
+  - pip install --upgrade ansible ansible-lint yamllint apt apt_pkg
 
 before_script:
-  - sudo apt-get install -y python3-apt
   - git clone https://github.com/adfinis-sygroup/ansible-lint-rules ../lint-rules
   - ansible --version
   - ansible-lint --version
