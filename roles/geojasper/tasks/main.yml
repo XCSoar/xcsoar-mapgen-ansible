@@ -1,8 +1,8 @@
 ---
   - name: ensure depencies are installed
-    apt:
+    package:
       name: "{{ item }}"
-    with_items:
+    loop:
       - unzip
       - libjpeg62-turbo-dev
       - build-essential
@@ -24,7 +24,7 @@
       mode: 0755
 
   - name: configure
-    command: ./configure --enable-shared
+    command: './configure --enable-shared'
     args:
       chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/"
       creates: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile"
