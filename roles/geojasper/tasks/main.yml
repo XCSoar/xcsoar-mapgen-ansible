@@ -1,39 +1,25 @@
 ---
-  - name: ensure depencies are installed
-    package:
-      name: "{{ item }}"
-    loop:
-      - unzip
-      - libjpeg62-turbo-dev
-      - build-essential
+- name: include os specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+      - '{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml'
+      - '{{ ansible_os_family }}.yml'
+      skip: true
+  tags:
+    - 'role::$ROLENAME'
+    - 'role::$ROLENAME:install'
+    - 'role::$ROLENAME:config'
 
-  - name: geojasper create installdir
-    file:
-      state: directory
-      path: "{{ mapgen_data_dir }}/geojasper"
+- nane: include os specific prerequisite tasks
+  include: '{{ item }}'
+  with_first_found:
+    - files:
+      - '{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml'
+      - '{{ ansible_os_family }}.yml'
+      skip: true
 
-  - name: fetch geojasper src
-    unarchive:
-      dest: "{{ mapgen_data_dir }}/geojasper"
-      copy: yes
-      src: geojasper_src.zip
-
-  - name: change perms on configure
-    file:
-      path: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/configure"
-      mode: 0755
-
-  - name: configure
-    command: './configure --enable-shared'
-    args:
-      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/"
-      creates: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO/Makefile"
-
-  - name: make build
-    make:
-      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
-
-  - name: make install
-    make:
-      chdir: "{{ mapgen_data_dir }}/geojasper/jasper-1.701.0.GEO"
-      target: install
+- include: installation.yml
+  tags:
+    - 'role::$ROLENAME'
+    - 'role::$ROLENAME:install'

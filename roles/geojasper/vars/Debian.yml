@@ -1,4 +1,3 @@
-mapgen_data_dir: /opt/
 geojasper_build_dependencies:
   - unzip
   - libjpeg62-turbo-dev
