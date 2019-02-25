@@ -1,7 +1,6 @@
 ---
- - hosts: all
+ - hosts: localhost
    roles:
-     - ansible-pull
      - nginx
      - { role: geojasper, tags: [ "geojasper" ] }
      - { role: mapgen, tags: [ "mapgen" ] }

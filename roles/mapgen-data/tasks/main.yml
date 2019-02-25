@@ -1,6 +1,6 @@
 ---
   - name: ensure lvm2 is installed
-    apt:
+    package:
       name: lvm2
 
   - name: configure mapgen dir
