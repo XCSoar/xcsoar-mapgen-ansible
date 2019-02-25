@@ -11,3 +11,4 @@
     cron_file: "mapgen-ansible-pull"
     user: "root"
     job: "ansible-pull -U {{ ansible_pull_mapgen_giturl }} local.yml"
+    name: "Mapgen Update"
