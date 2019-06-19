@@ -12,6 +12,7 @@
      - p7zip
      - gdal-bin
      - mapserver-bin
+     - wget
 
  - name: checkout git of mapgen to /opt/mapgen/
    git:
