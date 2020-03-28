@@ -5,14 +5,13 @@
 
  - name: ensure mapgen dependencies
    package:
-     name: "{{ item }}"
-   loop:
-     - python-cherrypy3
-     - python-genshi
-     - p7zip
-     - gdal-bin
-     - mapserver-bin
-     - wget
+     name: 
+       - python-cherrypy3
+       - python-genshi
+       - p7zip
+       - gdal-bin
+       - mapserver-bin
+       - wget
 
  - name: checkout git of mapgen to /opt/mapgen/
    git:
