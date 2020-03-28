@@ -22,4 +22,3 @@
     job: "ansible-pull -U {{ ansible_pull_mapgen_giturl }} local.yml"
     name: Null
     state: absent
-
