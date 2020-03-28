@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "generic/debian9"
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :machine
   end
