@@ -1,6 +1,6 @@
 ---
  - hosts: localhost
    roles:
-     - nginx
-     - { role: geojasper, tags: [ "geojasper" ] }
-     - { role: mapgen, tags: [ "mapgen" ] }
+     - { role: nginx, tags: ['nginx'] }
+     - { role: geojasper, tags: [ 'geojasper' ] }
+     - { role: mapgen, tags: [ 'mapgen' ] }

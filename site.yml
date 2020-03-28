@@ -1,8 +1,8 @@
 ---
  - hosts: all
    roles:
-     - ansible-pull
-     - mapgen-data
-     - nginx
-     - { role: geojasper, tags: [ "geojasper" ] }
-     - { role: mapgen, tags: [ "mapgen" ] }
+     - { role: ansible-pull, tags: ['ansible-pull'] }
+     - { role: mapgen-data, tags: ['mapgen-data'] }
+     - { role: nginx, tags: ['nginx'] }
+     - { role: geojasper, tags: [ 'geojasper' ] }
+     - { role: mapgen, tags: [ 'mapgen' ] }
