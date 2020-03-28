@@ -11,7 +11,7 @@
     - 'role::$ROLENAME:install'
     - 'role::$ROLENAME:config'
 
-- nane: include os specific prerequisite tasks
+- name: include os specific prerequisite tasks
   include: '{{ item }}'
   with_first_found:
     - files:
