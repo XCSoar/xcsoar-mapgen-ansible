@@ -3,5 +3,4 @@
    roles:
      - { role: ansible-pull, tags: ['ansible-pull'] }
      - { role: nginx, tags: ['nginx'] }
-     - { role: geojasper, tags: [ 'geojasper' ] }
      - { role: mapgen, tags: [ 'mapgen' ] }
