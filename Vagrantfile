@@ -12,6 +12,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible_local" do |ansible|
     ansible.config_file = "ansible-vagrant.cfg"
     ansible.playbook = "vagrant.yml"
-    ansible.install_mode = "pip"
+    ansible.install_mode = "pip3"
   end
 end
