@@ -27,9 +27,9 @@
    copy:
      src: "{{ item }}"
      dest: "/etc/systemd/system/{{ item }}"
-   loop:
-     - mapgen-web.service
-     - mapgen-worker.service
+   with_items:
+     - "mapgen-web.service"
+     - "mapgen-worker.service"
    notify:
      - restart_mapgen
 
@@ -38,6 +38,6 @@
      name: "{{ item }}"
      state: started
      enabled: yes
-   loop:
-     - mapgen-web
-     - mapgen-worker
+   with_items:
+     - "mapgen-web"
+     - "mapgen-worker"
